@@ -20,10 +20,11 @@ import { Checkbox } from "./ui/checkbox";
 enum fieldValueEnum {
   "firstname" = "First Name",
   "lastname" = "Last Name",
-  "email" = "Email",
+  "email" = "Email Address",
   "oldpassword" = "Old Password",
   "newpassword" = "New Password",
   "repassword" = "Repeat Password",
+  "password" = "Password",
 }
 
 interface Props<T extends FieldValues> {
@@ -83,9 +84,10 @@ const AuthCard = <T extends FieldValues>({
             .map((field: string, i: number) => (
               <div key={i} className="grid gap-2">
                 <Label
-                  className="font-inter text-sm mt-2 text-muted"
+                  className="font-inter font-thin text-xs mt-2 text-muted"
                   htmlFor={field}
                 >
+                  <span className=" text-lg text-red-600">*</span>
                   {fieldValueEnum[field as keyof typeof fieldValueEnum]}
                 </Label>
                 {field === "password" ? (
